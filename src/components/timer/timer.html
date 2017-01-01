@@ -1,0 +1,26 @@
+<div>
+  <ion-item class="no-bottom-border item">
+    <h1 text-center color="primary" class="timer-button timer-text">{{timer.displayTime}}</h1>
+  </ion-item>
+  <ion-fab bottom left *ngIf="timer.runTimer && timer.hasStarted && !timer.hasFinished">
+    <button ion-fab color="primary" (click)="pauseTimer()">
+  <ion-icon name="pause"></ion-icon>
+  </button>
+  </ion-fab>
+  <ion-fab bottom left *ngIf="!timer.runTimer && timer.hasStarted && !timer.hasFinished">
+    <button ion-fab color="primary" (click)="resumeTimer()">
+<ion-icon name="play"></ion-icon>
+</button>
+  </ion-fab>
+  <ion-fab bottom left *ngIf="!timer.hasStarted">
+    <button ion-fab color="primary" (click)="startTimer()" item-right>
+<ion-icon name="play"></ion-icon>
+</button>
+  </ion-fab>
+
+  <ion-fab bottom right *ngIf="!timer.runTimer && (timer.hasStarted || timer.hasFinished) || timer.hasFinished">
+    <button ion-fab color="danger" (click)="initTimer()" item-left>
+      <ion-icon name="refresh"></ion-icon>
+    </button>
+  </ion-fab>
+</div>
